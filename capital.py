@@ -8,7 +8,8 @@ capitais = [
 ]
 
 class Capital:
-    def __init__(self, distancia, pedagio):
+    def __init__(self, distancia, pedagio, distancia_lr):
         self.distancia = distancia
         self.pedagio = pedagio
+        self.distancia_lr = distancia_lr
         self.vizinhos = None
