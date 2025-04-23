@@ -404,7 +404,7 @@ joao_pessoa = {
 }
 
 macapa = {
-    "macapa": Capital(0, 0),
+    "macapa": Capital(0, 0, 0),
     # "belem": Capital(0, 0)
     # "vizinhos": ["belem"]
 }
