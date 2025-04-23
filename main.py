@@ -1,6 +1,7 @@
 from collections import deque
 
 from busca_em_largura import busca_em_largura           # Busca em largura
+from busca_em_profundidade import busca_em_profundidade
 from capital import Capital, capitais                   # Lista das capitais + classe capital
 from obter_capital import obter_capital                 # Switch case de cada capital (1-27)
 import re                                               # Expressões regulares
@@ -933,14 +934,30 @@ else:
 
 custo = 0.0
 vizinhos = deque() #um FIFO resolve o problema de validar todos na largura, melhor coisa do mundo!
+
 if flag:
-    visitados = [raiz] #essa lista será preenchida conforme as capitais expandidas
-    #no caso a origem já deve estar na lista, teoricamente ela já foi visitada
-    if raiz == no_destino:#da maneira que foi implentado a busca não consegue achar se a origem é o destino
-        print("\n\nDestino alcançado!!!\n\n")#essa é a solução para contornar esse problema
+    print("\n1- Busca em Largura")
+    print("2- Busca em Profundidade")
+    print("3- Busca A* (heurística)")
+    busca = input("Selecione um método de busca: ")
+    visitados = [raiz]  # Essa lista será preenchida conforme as capitais expandidas
+    # No caso a origem já deve estar na lista, teoricamente ela já foi visitada
+    if raiz == no_destino:  # Da maneira que foi implentado a busca, não dá para achar se a origem é o destino
+        print("\n\nDestino alcançado!!!\n\n")  # Esse IF é a solução para contornar esse problema
     else:
         print("Iniciando a Busca em Largura!\n")
-        custo = busca_em_largura(raiz, rotas, no_destino, vizinhos, visitados)
+        match int(busca):
+            case 1:
+                custo = busca_em_largura(raiz, rotas, no_destino, vizinhos, visitados)
+            case 2:
+                custo = busca_em_profundidade(raiz, rotas, no_destino, vizinhos, visitados)
+            case 3:
+                print("Em construção...")
+            case _:
+                print("Se é loko não compensa...")
+
 else:
     print("\nHouve um problema na leitura da origem/destino")
+
 print("\nCusto da viagem: ", custo)
+#FAZER CONTAGEM DE VISITAS
