@@ -948,9 +948,9 @@ if flag:
         print("Iniciando a Busca em Largura!\n")
         match int(busca):
             case 1:
-                custo = busca_em_largura(raiz, rotas, no_destino, vizinhos, visitados)
+                custo = busca_em_largura(raiz, rotas, no_destino, vizinhos, visitados, 0)
             case 2:
-                custo = busca_em_profundidade(raiz, rotas, no_destino, vizinhos, visitados)
+                custo = busca_em_profundidade(raiz, rotas, no_destino, vizinhos, visitados, 0)
             case 3:
                 print("Em construção...")
             case _:

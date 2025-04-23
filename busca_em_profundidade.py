@@ -1,9 +1,9 @@
 mapaeiaCusto = dict()
 
-
-def busca_em_profundidade(raiz, rotas, no_destino, vizinhos, visitados):
+def busca_em_profundidade(raiz, rotas, no_destino, vizinhos, visitados, contador):
     if raiz in rotas:
         print("\nBuscando vizinhos em", raiz.upper())  # Novamente melhor uppercase
+        contador += 1 # Cada vez que visita um nó adiciona no contador
         for rota in rotas[raiz]["vizinhos"]:
             if rota in visitados:  # Encontra capitais já visitada
                 print("Vizinho", rota.upper(),"já foi encontrado.")
@@ -21,12 +21,13 @@ def busca_em_profundidade(raiz, rotas, no_destino, vizinhos, visitados):
             vizinhos.append(rota)  # PILHA de vizinhos (FILO = First In, Last Out)
             print("Caminho até", rota.upper(), "encontrado! Distância:", mapaeiaCusto[rota])
             if rota == no_destino:
-                print("\n\nDestino alcançado!!!\n\n")
+                print("\n\nDestino alcançado!!!")
+                print("Capitais visitadas:",contador,"\n\n")
                 return mapaeiaCusto[rota]
         print("Pressione enter para continuar...")
         input()
         #pop() para PILHA
-        return busca_em_profundidade(vizinhos.pop(), rotas, no_destino, vizinhos, visitados)
+        return busca_em_profundidade(vizinhos.pop(), rotas, no_destino, vizinhos, visitados, contador)
     else:
         print("Erro ao traçar rota!")
         return None
