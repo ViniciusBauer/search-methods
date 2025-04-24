@@ -4,6 +4,8 @@ def busca_em_profundidade(raiz, rotas, no_destino, vizinhos, visitados, contador
     if raiz in rotas:
         print("\nBuscando vizinhos em", raiz.upper())  # Novamente melhor uppercase
         contador += 1 # Cada vez que visita um nó adiciona no contador
+        if raiz in mapaeiaCusto:# Só imprimi se a raiz já foi mapeada, isso acontece depois da primeira iteração do FOR
+            print("\tDistância total já percorrida:", mapaeiaCusto[raiz])
         for rota in rotas[raiz]["vizinhos"]:
             if rota in visitados:  # Encontra capitais já visitada
                 print("Vizinho", rota.upper(),"já foi encontrado.")
@@ -19,11 +21,12 @@ def busca_em_profundidade(raiz, rotas, no_destino, vizinhos, visitados, contador
                 mapaeiaCusto[rota] = rotas[raiz][rota].distancia
 
             vizinhos.append(rota)  # PILHA de vizinhos (FILO = First In, Last Out)
-            print("Caminho até", rota.upper(), "encontrado! Distância:", mapaeiaCusto[rota])
-        if rota == no_destino:
-            print("\n\nDestino alcançado!!!")
-            print("Capitais visitadas:",contador,"\n\n")
-            return mapaeiaCusto[rota]
+            print("Caminho até", rota.upper(), "encontrado! Distância entre as duas capitais:", rotas[raiz][rota].distancia)
+
+            if rota == no_destino:
+                print("\n\nDestino alcançado!!!")
+                print("Capitais visitadas:",contador,"\n\n")
+                return mapaeiaCusto[rota]
         print("Pressione enter para continuar...")
         input()
         #pop() para PILHA

@@ -9,7 +9,7 @@ capitais = [
 
 class Capital:
     def __init__(self, distancia, pedagio, distancia_lr):
-        self.distancia = distancia
-        self.pedagio = pedagio
-        self.distancia_lr = distancia_lr
+        self.distancia = distancia # Distância rodoviária
+        self.pedagio = pedagio # Valor em R$ do pedágio
+        self.distancia_lr = distancia_lr #Distância aérea (linha reta)
         self.vizinhos = None
