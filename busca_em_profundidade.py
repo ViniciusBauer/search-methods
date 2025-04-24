@@ -20,10 +20,10 @@ def busca_em_profundidade(raiz, rotas, no_destino, vizinhos, visitados, contador
 
             vizinhos.append(rota)  # PILHA de vizinhos (FILO = First In, Last Out)
             print("Caminho até", rota.upper(), "encontrado! Distância:", mapaeiaCusto[rota])
-            if rota == no_destino:
-                print("\n\nDestino alcançado!!!")
-                print("Capitais visitadas:",contador,"\n\n")
-                return mapaeiaCusto[rota]
+        if rota == no_destino:
+            print("\n\nDestino alcançado!!!")
+            print("Capitais visitadas:",contador,"\n\n")
+            return mapaeiaCusto[rota]
         print("Pressione enter para continuar...")
         input()
         #pop() para PILHA

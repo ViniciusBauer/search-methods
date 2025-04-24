@@ -2,6 +2,7 @@ from collections import deque
 
 from busca_em_largura import busca_em_largura           # Busca em largura
 from busca_em_profundidade import busca_em_profundidade
+from busca_em_astar import busca_em_astar
 from capital import Capital, capitais                   # Lista das capitais + classe capital
 from obter_capital import obter_capital                 # Switch case de cada capital (1-27)
 import re                                               # Expressões regulares
@@ -945,14 +946,14 @@ if flag:
     if raiz == no_destino:  # Da maneira que foi implentado a busca, não dá para achar se a origem é o destino
         print("\n\nDestino alcançado!!!\n\n")  # Esse IF é a solução para contornar esse problema
     else:
-        print("Iniciando a Busca em Largura!\n")
+        print("Iniciando a Busca!\n")
         match int(busca):
             case 1:
                 custo = busca_em_largura(raiz, rotas, no_destino, vizinhos, visitados, 0)
             case 2:
                 custo = busca_em_profundidade(raiz, rotas, no_destino, vizinhos, visitados, 0)
             case 3:
-                print("Em construção...")
+                custo = busca_em_astar(raiz, rotas, no_destino, vizinhos, visitados, 0)
             case _:
                 print("Se é loko não compensa...")
 
