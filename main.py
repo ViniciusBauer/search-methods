@@ -955,7 +955,7 @@ if flag:
             case 3:
                 custo = busca_em_astar(raiz, rotas, no_destino, vizinhos, visitados, 0)
             case _:
-                print("Se é loko não compensa...")
+                print("Valor inválido.")
 
 else:
     print("\nHouve um problema na leitura da origem/destino")

@@ -17,10 +17,6 @@ def busca_em_astar(raiz, rotas, no_destino, vizinhos, visitados, contador):
             # A distância em linha reta é o que tem mais importância, por isso ela é elevada ao quadrado
             # Dá para dizer que a distância rodoviária é a mais importante, daí é só trocar a base
 
-            # Segundo meus testes se deixar fora do FOR ele vai voltar para capital já descoberta, podendo andar em círculos,
-            # Por isso é melhor deixar assim, existe uma chance de ele se perder e cair em uma rota sem nenhum caminho disponível
-            # Mas desse jeito ainda fica mais correto, se deixar fora, outra lógica adicional precisaria ser implementada,
-            # usando pilha ou fila talvez, mas ficaria bem complexo e mesmo assim não sei se resolveria o problema
             visitados.append(rota)
 
             # Precisa mapear o custo mesmo que não sejo o melhor caminho
@@ -39,16 +35,13 @@ def busca_em_astar(raiz, rotas, no_destino, vizinhos, visitados, contador):
         melhor_custo = ""#só para não dar alert na recursividade
 
         if dict_vizinhos:   # Se o dict existir: calcula o custo mínimo
-            # Usa o .get para dizer que são os valores a serem ordenados? Estranho...
             melhor_custo = min(dict_vizinhos, key=dict_vizinhos.get)   # Melhor custo é o menor valor entre os caminhos
 
             # Usando items() ficaria mais claro, porém o código fica mais poluído
             # melhor_custo = min(dict_vizinhos.items(), key=lambda item:item[1])
             # o item pega os pares, como se fosse uma lista, e o lambda faz a comparação pelo especificado.
             # Se especificar item[1] significa os valores, se trocar para item[0] significa as chaves.
-            # Pelo menos assim seria usando a lógica do Kotlin/Java, mas o importante é que o que foi feito funciona
 
-            #Mudei um pouco o print, ficou mais claro agora
             print("\tMelhor caminho encontrado", melhor_custo.upper(), "! Distância já percorida:", mapaeiaCusto[melhor_custo])
 
         print("Pressione enter para continuar...")
